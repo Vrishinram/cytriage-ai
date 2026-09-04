@@ -1,0 +1,643 @@
+[
+  {
+    "id": "alt-bgp-001",
+    "timestamp": "2026-09-05T10:14:02Z",
+    "source_device": "core-rtr-01.dc1",
+    "subsystem": "OPTICS",
+    "severity": "MAJOR",
+    "message": "Transceiver SFP+ eth0/1 Rx optical power dropped to -19.4 dBm below low-alarm threshold (-18.0 dBm)",
+    "raw_payload": {
+      "interface": "eth0/1",
+      "rx_power_dbm": -19.4,
+      "tx_power_dbm": -2.1,
+      "wavelength_nm": 1310,
+      "connector": "LC-Duplex"
+    }
+  },
+  {
+    "id": "alt-bgp-002",
+    "timestamp": "2026-09-05T10:14:05Z",
+    "source_device": "core-rtr-01.dc1",
+    "subsystem": "INTERFACE",
+    "severity": "CRITICAL",
+    "message": "Interface eth0/1 carrier state transitioned from UP to DOWN (Link loss detected)",
+    "raw_payload": {
+      "interface": "eth0/1",
+      "carrier_state": "DOWN",
+      "speed_mbps": 10000,
+      "flap_count_1m": 3
+    }
+  },
+  {
+    "id": "alt-bgp-003",
+    "timestamp": "2026-09-05T10:14:06Z",
+    "source_device": "core-rtr-01.dc1",
+    "subsystem": "BGP",
+    "severity": "CRITICAL",
+    "message": "%BGP-5-ADJCHANGE: neighbor 198.51.100.1 Down - Interface eth0/1 flap detected",
+    "raw_payload": {
+      "peer_ip": "198.51.100.1",
+      "remote_as": 64512,
+      "local_as": 65000,
+      "interface": "eth0/1",
+      "prev_state": "ESTABLISHED",
+      "curr_state": "IDLE"
+    }
+  },
+  {
+    "id": "alt-bgp-004",
+    "timestamp": "2026-09-05T10:14:07Z",
+    "source_device": "core-rtr-02.dc1",
+    "subsystem": "BGP",
+    "severity": "MAJOR",
+    "message": "%BGP-3-NOTIFICATION: received from neighbor 198.51.100.1 4/0 (hold timer expired)",
+    "raw_payload": {
+      "peer_ip": "198.51.100.1",
+      "remote_as": 64512,
+      "error_code": "4/0",
+      "error_desc": "Hold Timer Expired"
+    }
+  },
+  {
+    "id": "alt-bgp-005",
+    "timestamp": "2026-09-05T10:14:08Z",
+    "source_device": "core-rtr-01.dc1",
+    "subsystem": "ROUTING",
+    "severity": "CRITICAL",
+    "message": "BGP RIB route withdrawal: 142,500 external prefixes withdrawn following peer 198.51.100.1 drop",
+    "raw_payload": {
+      "peer_ip": "198.51.100.1",
+      "prefixes_withdrawn": 142500,
+      "table": "inet.0"
+    }
+  },
+  {
+    "id": "alt-bgp-006",
+    "timestamp": "2026-09-05T10:14:09Z",
+    "source_device": "core-rtr-01.dc1",
+    "subsystem": "INTERFACE",
+    "severity": "MAJOR",
+    "message": "Interface eth0/1 CRC framing error counter incremented by 1,480 frames in last 10s",
+    "raw_payload": {
+      "interface": "eth0/1",
+      "crc_errors": 1480,
+      "input_drops": 492
+    }
+  },
+  {
+    "id": "alt-bgp-007",
+    "timestamp": "2026-09-05T10:14:12Z",
+    "source_device": "core-rtr-02.dc1",
+    "subsystem": "ROUTING",
+    "severity": "MAJOR",
+    "message": "OSPF Cost recalculation initiated: rerouting transit prefix volume towards backup path Loopback0",
+    "raw_payload": {
+      "protocol": "OSPFv2",
+      "area": "0.0.0.0",
+      "spf_calc_time_ms": 42
+    }
+  },
+  {
+    "id": "alt-bgp-008",
+    "timestamp": "2026-09-05T10:14:14Z",
+    "source_device": "core-rtr-01.dc1",
+    "subsystem": "BGP",
+    "severity": "CRITICAL",
+    "message": "BGP peer 198.51.100.1 state flapping: 4 state changes within 60 seconds",
+    "raw_payload": {
+      "peer_ip": "198.51.100.1",
+      "flap_count": 4,
+      "damping_penalty": 2400
+    }
+  },
+  {
+    "id": "alt-bgp-009",
+    "timestamp": "2026-09-05T10:14:15Z",
+    "source_device": "core-rtr-02.dc1",
+    "subsystem": "INTERFACE",
+    "severity": "MAJOR",
+    "message": "Transit interface TenGigE0/0/0/1 bandwidth saturation spike at 94.8% due to peer failover",
+    "raw_payload": {
+      "interface": "TenGigE0/0/0/1",
+      "utilization_pct": 94.8,
+      "egress_bps": 9480000000
+    }
+  },
+  {
+    "id": "alt-bgp-010",
+    "timestamp": "2026-09-05T10:14:18Z",
+    "source_device": "core-rtr-01.dc1",
+    "subsystem": "ROUTING",
+    "severity": "MAJOR",
+    "message": "High BGP dampening penalty applied to upstream AS64512 routes; dampening interval set to 900s",
+    "raw_payload": {
+      "as_path": "64512",
+      "penalty": 3200,
+      "suppress_duration_sec": 900
+    }
+  },
+  {
+    "id": "alt-bgp-011",
+    "timestamp": "2026-09-05T10:14:20Z",
+    "source_device": "core-rtr-01.dc1",
+    "subsystem": "INTERFACE",
+    "severity": "MAJOR",
+    "message": "Interface eth0/1 line protocol state changed to DOWN",
+    "raw_payload": {
+      "interface": "eth0/1",
+      "protocol_state": "DOWN"
+    }
+  },
+  {
+    "id": "alt-bgp-012",
+    "timestamp": "2026-09-05T10:14:22Z",
+    "source_device": "core-rtr-02.dc1",
+    "subsystem": "BGP",
+    "severity": "CRITICAL",
+    "message": "BGP multipath gateway loss: primary next-hop 198.51.100.1 unreachable via eth0/1",
+    "raw_payload": {
+      "next_hop": "198.51.100.1",
+      "status": "UNREACHABLE"
+    }
+  },
+  {
+    "id": "alt-bgp-013",
+    "timestamp": "2026-09-05T10:14:24Z",
+    "source_device": "core-rtr-01.dc1",
+    "subsystem": "BGP",
+    "severity": "CRITICAL",
+    "message": "BGP neighbor 198.51.100.1 entered ACTIVE state, TCP connection retry failed (SYN timeout)",
+    "raw_payload": {
+      "peer_ip": "198.51.100.1",
+      "state": "ACTIVE",
+      "tcp_syn_retries": 5
+    }
+  },
+  {
+    "id": "alt-bgp-014",
+    "timestamp": "2026-09-05T10:14:25Z",
+    "source_device": "core-rtr-02.dc1",
+    "subsystem": "ROUTING",
+    "severity": "MAJOR",
+    "message": "FIB update backlog: 28,000 hardware forwarding entries pending synchronization",
+    "raw_payload": {
+      "fib_queue_depth": 28000,
+      "sync_delay_ms": 320
+    }
+  },
+  {
+    "id": "alt-bgp-015",
+    "timestamp": "2026-09-05T10:14:28Z",
+    "source_device": "core-rtr-01.dc1",
+    "subsystem": "OPTICS",
+    "severity": "CRITICAL",
+    "message": "Optical transceiver Loss of Signal (LOS) alarm asserted on SFP+ port eth0/1",
+    "raw_payload": {
+      "interface": "eth0/1",
+      "los_asserted": true,
+      "laser_bias_current_ma": 0.2
+    }
+  },
+  {
+    "id": "alt-bgp-016",
+    "timestamp": "2026-09-05T10:14:30Z",
+    "source_device": "core-rtr-01.dc1",
+    "subsystem": "BGP",
+    "severity": "CRITICAL",
+    "message": "BGP peer 198.51.100.1 connection reset by peer hold-timer teardown",
+    "raw_payload": {
+      "peer_ip": "198.51.100.1",
+      "teardown_reason": "PEER_HOLD_TIMER"
+    }
+  },
+  {
+    "id": "alt-bgp-017",
+    "timestamp": "2026-09-05T10:14:32Z",
+    "source_device": "core-rtr-02.dc1",
+    "subsystem": "INTERFACE",
+    "severity": "MAJOR",
+    "message": "Transit route failover complete: egress traffic shift 100% routed through core-rtr-02.dc1",
+    "raw_payload": {
+      "primary_router": "core-rtr-01.dc1",
+      "failover_router": "core-rtr-02.dc1",
+      "traffic_shift_gbps": 8.9
+    }
+  },
+  {
+    "id": "alt-bgp-018",
+    "timestamp": "2026-09-05T10:14:35Z",
+    "source_device": "core-rtr-01.dc1",
+    "subsystem": "ROUTING",
+    "severity": "MAJOR",
+    "message": "BGP convergence delay alert: 34 default egress routes operating on sub-optimal AS path",
+    "raw_payload": {
+      "affected_routes": 34,
+      "latency_delta_ms": 18.5
+    }
+  },
+
+  {
+    "id": "alt-pwr-001",
+    "timestamp": "2026-09-05T10:15:02Z",
+    "source_device": "agg-sw-04.dc2",
+    "subsystem": "POWER",
+    "severity": "CRITICAL",
+    "message": "%PLATFORM-1-PWR_FAULT: Power Supply Module 2 AC input lost (feed B offline)",
+    "raw_payload": {
+      "chassis": "agg-sw-04.dc2",
+      "psu_slot": 2,
+      "ac_voltage": 0.0,
+      "status": "FAULT_INPUT_LOST"
+    }
+  },
+  {
+    "id": "alt-pwr-002",
+    "timestamp": "2026-09-05T10:15:04Z",
+    "source_device": "agg-sw-04.dc2",
+    "subsystem": "POWER",
+    "severity": "MAJOR",
+    "message": "Switch stack power operating in degraded non-redundant single-PSU mode (PSU-1 remaining)",
+    "raw_payload": {
+      "active_psu_count": 1,
+      "total_budget_w": 750,
+      "drawn_w": 680,
+      "headroom_w": 70
+    }
+  },
+  {
+    "id": "alt-pwr-003",
+    "timestamp": "2026-09-05T10:15:05Z",
+    "source_device": "agg-sw-04.dc2",
+    "subsystem": "CHASSIS",
+    "severity": "MAJOR",
+    "message": "Fan tray 1 and Fan tray 2 speed forced to 100% duty cycle (thermal compensation override)",
+    "raw_payload": {
+      "fan_1_rpm": 12500,
+      "fan_2_rpm": 12450,
+      "target_duty_cycle_pct": 100
+    }
+  },
+  {
+    "id": "alt-pwr-004",
+    "timestamp": "2026-09-05T10:15:07Z",
+    "source_device": "agg-sw-04.dc2",
+    "subsystem": "HARDWARE",
+    "severity": "CRITICAL",
+    "message": "%ENVMON-2-TEMP: Internal chassis temperature sensor Inlet-Temp-01 reached 48.2C (Warning threshold: 45C)",
+    "raw_payload": {
+      "sensor": "Inlet-Temp-01",
+      "curr_temp_c": 48.2,
+      "threshold_c": 45.0
+    }
+  },
+  {
+    "id": "alt-pwr-005",
+    "timestamp": "2026-09-05T10:15:09Z",
+    "source_device": "agg-sw-04.dc2",
+    "subsystem": "POWER",
+    "severity": "CRITICAL",
+    "message": "PoE allocation budget exceeded 90% capacity: shedding power on priority-low interfaces",
+    "raw_payload": {
+      "poe_budget_w": 750,
+      "poe_drawn_w": 695,
+      "shed_ports": ["GigabitEthernet1/0/24", "GigabitEthernet1/0/25"]
+    }
+  },
+  {
+    "id": "alt-pwr-006",
+    "timestamp": "2026-09-05T10:15:10Z",
+    "source_device": "access-sw-12.dc2",
+    "subsystem": "INTERFACE",
+    "severity": "MAJOR",
+    "message": "Uplink Port-Channel 4 member interface GigabitEthernet1/0/48 down due to upstream switch power shed",
+    "raw_payload": {
+      "interface": "GigabitEthernet1/0/48",
+      "port_channel": "Po4",
+      "state": "DOWN"
+    }
+  },
+  {
+    "id": "alt-pwr-007",
+    "timestamp": "2026-09-05T10:15:12Z",
+    "source_device": "access-sw-14.dc2",
+    "subsystem": "INTERFACE",
+    "severity": "MAJOR",
+    "message": "PoE inline power denied for 12 access points on switch stack member 2",
+    "raw_payload": {
+      "denied_ports_count": 12,
+      "power_class": "Class4-30W"
+    }
+  },
+  {
+    "id": "alt-pwr-008",
+    "timestamp": "2026-09-05T10:15:14Z",
+    "source_device": "agg-sw-04.dc2",
+    "subsystem": "POWER",
+    "severity": "MAJOR",
+    "message": "StackPower ring topology degraded: power sharing bus operating in segmented mode",
+    "raw_payload": {
+      "stack_power_state": "SEGMENTED",
+      "master_psu": "PSU-1"
+    }
+  },
+  {
+    "id": "alt-pwr-009",
+    "timestamp": "2026-09-05T10:15:16Z",
+    "source_device": "agg-sw-04.dc2",
+    "subsystem": "CHASSIS",
+    "severity": "CRITICAL",
+    "message": "Thermal hotspot warning on ASIC-0 switch fabric: 56.4C approaching emergency shutdown limit 60C",
+    "raw_payload": {
+      "sensor": "ASIC-0",
+      "curr_temp_c": 56.4,
+      "shutdown_threshold_c": 60.0
+    }
+  },
+  {
+    "id": "alt-pwr-010",
+    "timestamp": "2026-09-05T10:15:18Z",
+    "source_device": "access-sw-12.dc2",
+    "subsystem": "INTERFACE",
+    "severity": "MAJOR",
+    "message": "LACP bundle Po4 degraded: bandwidth reduced from 20 Gbps to 10 Gbps",
+    "raw_payload": {
+      "bundle": "Po4",
+      "active_members": 1,
+      "configured_members": 2
+    }
+  },
+  {
+    "id": "alt-pwr-011",
+    "timestamp": "2026-09-05T10:15:20Z",
+    "source_device": "agg-sw-04.dc2",
+    "subsystem": "POWER",
+    "severity": "CRITICAL",
+    "message": "DC Rack PDU Feed B branch breaker loss notification received via ATS telemetry",
+    "raw_payload": {
+      "pdu_id": "PDU-B-RACK-14",
+      "breaker_status": "TRIPPED"
+    }
+  },
+  {
+    "id": "alt-pwr-012",
+    "timestamp": "2026-09-05T10:15:22Z",
+    "source_device": "agg-sw-04.dc2",
+    "subsystem": "HARDWARE",
+    "severity": "MAJOR",
+    "message": "Chassis status amber LED blinking: power redundancy lost",
+    "raw_payload": {
+      "led_color": "AMBER",
+      "led_mode": "BLINKING"
+    }
+  },
+  {
+    "id": "alt-pwr-013",
+    "timestamp": "2026-09-05T10:15:25Z",
+    "source_device": "access-sw-14.dc2",
+    "subsystem": "POWER",
+    "severity": "MAJOR",
+    "message": "PoE port GigabitEthernet1/0/28 overload fault detected; port shutdown by controller",
+    "raw_payload": {
+      "port": "GigabitEthernet1/0/28",
+      "overload_current_ma": 720
+    }
+  },
+  {
+    "id": "alt-pwr-014",
+    "timestamp": "2026-09-05T10:15:28Z",
+    "source_device": "agg-sw-04.dc2",
+    "subsystem": "POWER",
+    "severity": "CRITICAL",
+    "message": "Total switch stack power margin critical: 25 Watts remaining before forced node shutdown",
+    "raw_payload": {
+      "margin_w": 25,
+      "critical_level": "EMERGENCY"
+    }
+  },
+
+  {
+    "id": "alt-auth-001",
+    "timestamp": "2026-09-05T10:16:01Z",
+    "source_device": "edge-gw-01",
+    "subsystem": "AUTH",
+    "severity": "MAJOR",
+    "message": "802.1X Supplicant authentication storm detected: 1,250 Access-Requests/sec exceeding baseline threshold",
+    "raw_payload": {
+      "req_rate_per_sec": 1250,
+      "baseline_per_sec": 120,
+      "protocol": "802.1X"
+    }
+  },
+  {
+    "id": "alt-auth-002",
+    "timestamp": "2026-09-05T10:16:03Z",
+    "source_device": "auth-rad-01",
+    "subsystem": "RADIUS",
+    "severity": "CRITICAL",
+    "message": "RADIUS worker thread pool queue utilization reached 96.4% on UDP port 1812",
+    "raw_payload": {
+      "port": 1812,
+      "queue_depth": 4820,
+      "max_queue": 5000,
+      "active_workers": 64
+    }
+  },
+  {
+    "id": "alt-auth-003",
+    "timestamp": "2026-09-05T10:16:05Z",
+    "source_device": "auth-rad-01",
+    "subsystem": "RADIUS",
+    "severity": "CRITICAL",
+    "message": "RADIUS packet drop counter: 3,120 Access-Requests dropped due to socket input buffer overflow",
+    "raw_payload": {
+      "dropped_packets": 3120,
+      "buffer_state": "OVERFLOW"
+    }
+  },
+  {
+    "id": "alt-auth-004",
+    "timestamp": "2026-09-05T10:16:07Z",
+    "source_device": "edge-gw-01",
+    "subsystem": "AUTH",
+    "severity": "CRITICAL",
+    "message": "AAA dead-criteria triggered for primary server 10.100.10.15 (auth-rad-01) after 5 consecutive timeouts",
+    "raw_payload": {
+      "server_ip": "10.100.10.15",
+      "timeout_count": 5,
+      "state": "DEAD"
+    }
+  },
+  {
+    "id": "alt-auth-005",
+    "timestamp": "2026-09-05T10:16:09Z",
+    "source_device": "auth-rad-02",
+    "subsystem": "RADIUS",
+    "severity": "MAJOR",
+    "message": "Secondary RADIUS server experiencing failover load spike: incoming request rate up 480%",
+    "raw_payload": {
+      "incoming_rate_per_sec": 980,
+      "worker_threads_busy": 58
+    }
+  },
+  {
+    "id": "alt-auth-006",
+    "timestamp": "2026-09-05T10:16:11Z",
+    "source_device": "edge-gw-02",
+    "subsystem": "SECURITY",
+    "severity": "MAJOR",
+    "message": "Captive Portal and VPN auth latency degraded: P99 response time rose to 4,850ms",
+    "raw_payload": {
+      "p99_latency_ms": 4850,
+      "sla_limit_ms": 500
+    }
+  },
+  {
+    "id": "alt-auth-007",
+    "timestamp": "2026-09-05T10:16:14Z",
+    "source_device": "auth-rad-01",
+    "subsystem": "AUTH",
+    "severity": "CRITICAL",
+    "message": "Backend Active Directory LDAP connector sync timeout on port 636; query queue congested",
+    "raw_payload": {
+      "ldap_host": "dc01.corp.internal",
+      "port": 636,
+      "timeout_ms": 10000
+    }
+  },
+  {
+    "id": "alt-auth-008",
+    "timestamp": "2026-09-05T10:16:18Z",
+    "source_device": "edge-gw-01",
+    "subsystem": "SECURITY",
+    "severity": "MAJOR",
+    "message": "Client dot1x re-authentication retry limit exceeded for 450 endpoints; quiet-period backoff needed",
+    "raw_payload": {
+      "affected_endpoints": 450,
+      "suggested_quiet_period_sec": 60
+    }
+  },
+
+  {
+    "id": "alt-noise-001",
+    "timestamp": "2026-09-05T10:13:45Z",
+    "source_device": "log-collector-01",
+    "subsystem": "NTP",
+    "severity": "INFO",
+    "message": "NTP stratum-2 synchronization minor clock offset +4.1ms within acceptable variance (+-15ms)",
+    "raw_payload": {
+      "offset_ms": 4.1,
+      "server": "time.google.com",
+      "action": "NONE"
+    }
+  },
+  {
+    "id": "alt-noise-002",
+    "timestamp": "2026-09-05T10:14:00Z",
+    "source_device": "mgmt-srv-02",
+    "subsystem": "SYS",
+    "severity": "INFO",
+    "message": "System log rotation completed successfully for /var/log/syslog (compressed 42MB)",
+    "raw_payload": {
+      "service": "logrotate",
+      "exit_code": 0
+    }
+  },
+  {
+    "id": "alt-noise-003",
+    "timestamp": "2026-09-05T10:14:10Z",
+    "source_device": "dist-sw-09",
+    "subsystem": "ENV",
+    "severity": "INFO",
+    "message": "Chassis fan 3 speed adjusted from 4200 RPM to 4350 RPM (ambient curve normal)",
+    "raw_payload": {
+      "fan_id": 3,
+      "rpm": 4350
+    }
+  },
+  {
+    "id": "alt-noise-004",
+    "timestamp": "2026-09-05T10:14:40Z",
+    "source_device": "bastion-01",
+    "subsystem": "AUTH",
+    "severity": "INFO",
+    "message": "Scheduled PAM automated session closed for user svc-backup-agent",
+    "raw_payload": {
+      "user": "svc-backup-agent",
+      "session_duration_sec": 12
+    }
+  },
+  {
+    "id": "alt-noise-005",
+    "timestamp": "2026-09-05T10:15:00Z",
+    "source_device": "net-mon-01",
+    "subsystem": "MONITOR",
+    "severity": "MINOR",
+    "message": "Synthetic ICMP echo ping probe to 10.200.0.1 experienced single packet loss; probe recovered immediately",
+    "raw_payload": {
+      "target": "10.200.0.1",
+      "loss_pct": 1.0,
+      "recovered": true
+    }
+  },
+  {
+    "id": "alt-noise-006",
+    "timestamp": "2026-09-05T10:15:30Z",
+    "source_device": "access-sw-01",
+    "subsystem": "INTERFACE",
+    "severity": "INFO",
+    "message": "Port GigabitEthernet0/12 802.3az Energy Efficient Ethernet sleep state toggled",
+    "raw_payload": {
+      "port": "GigabitEthernet0/12",
+      "eee_state": "ACTIVE"
+    }
+  },
+  {
+    "id": "alt-noise-007",
+    "timestamp": "2026-09-05T10:15:45Z",
+    "source_device": "dhcp-core-01",
+    "subsystem": "SYS",
+    "severity": "INFO",
+    "message": "DHCP lease pool vlan-100 utilization reached 42% (healthy allocation threshold)",
+    "raw_payload": {
+      "pool": "vlan-100",
+      "utilization_pct": 42
+    }
+  },
+  {
+    "id": "alt-noise-008",
+    "timestamp": "2026-09-05T10:16:00Z",
+    "source_device": "sec-scanner-01",
+    "subsystem": "SECURITY",
+    "severity": "INFO",
+    "message": "Routine internal vulnerability credential check completed; zero new high CVEs detected",
+    "raw_payload": {
+      "scanned_hosts": 140,
+      "findings": 0
+    }
+  },
+  {
+    "id": "alt-noise-009",
+    "timestamp": "2026-09-05T10:16:15Z",
+    "source_device": "core-gw-ext",
+    "subsystem": "SECURITY",
+    "severity": "MINOR",
+    "message": "Stateless ACL drop: 14 packets dropped on public WAN border port 23 (telnet scan blocked)",
+    "raw_payload": {
+      "action": "DROP",
+      "port": 23,
+      "packets": 14
+    }
+  },
+  {
+    "id": "alt-noise-010",
+    "timestamp": "2026-09-05T10:16:25Z",
+    "source_device": "dns-internal-01",
+    "subsystem": "SYS",
+    "severity": "INFO",
+    "message": "DNS authoritative zone serial auto-synchronized with secondary nameserver",
+    "raw_payload": {
+      "zone": "corp.internal",
+      "serial": 2026090501
+    }
+  }
+]

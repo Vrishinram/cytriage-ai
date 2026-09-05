@@ -8,7 +8,9 @@ env/
 .next/
 out/
 build/
-dist/
+# frontend/dist committed for single-command judge execution
+!frontend/dist/
+!frontend/dist/**
 
 # Python cache
 __pycache__/

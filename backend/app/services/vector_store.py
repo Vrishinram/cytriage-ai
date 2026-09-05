@@ -4,13 +4,19 @@ import os
 import re
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
-import faiss
 import numpy as np
+
+try:
+    import faiss
+    HAS_FAISS = True
+except ImportError:
+    faiss = None
+    HAS_FAISS = False
 
 from ..config import GEMINI_API_KEY, RUNBOOKS_DIR_PATH
 from ..models.schemas import Runbook, RunbookChunk
 
-# Dimension for vector index (768 matches Gemini text-embedding-004)
+# Dimension for vector index (768 matches Gemini text-embedding-004 / gemini-embedding-001)
 EMBED_DIM = 768
 
 
@@ -19,7 +25,8 @@ class LocalVectorStore:
         self.runbooks_dir = runbooks_dir
         self.runbooks: Dict[str, Runbook] = {}
         self.chunks: List[RunbookChunk] = []
-        self.index: Optional[faiss.IndexFlatIP] = None
+        self.index = None
+        self.vectors: Optional[np.ndarray] = None
         self._gemini_client = None
 
         if GEMINI_API_KEY:
@@ -68,24 +75,25 @@ class LocalVectorStore:
         return vec
 
     def embed_text(self, text: str) -> np.ndarray:
-        """Embed text using Gemini API if available, else local domain-aware embeddings."""
+        """Embed text using Gemini API (gemini-embedding-001) if available, else local domain-aware embeddings."""
         if self._gemini_client:
-            try:
-                response = self._gemini_client.models.embed_content(
-                    model="text-embedding-004",
-                    contents=text
-                )
-                if hasattr(response, "embedding") and response.embedding:
-                    vec = np.array(response.embedding.values, dtype=np.float32)
-                    norm = np.linalg.norm(vec)
-                    return vec / norm if norm > 0 else vec
-            except Exception as e:
-                print(f"[VectorStore] Gemini embedding failed: {e}. Falling back to local embeddings.")
+            for model_name in ["gemini-embedding-001", "text-embedding-004"]:
+                try:
+                    response = self._gemini_client.models.embed_content(
+                        model=model_name,
+                        contents=text
+                    )
+                    if hasattr(response, "embedding") and response.embedding:
+                        vec = np.array(response.embedding.values, dtype=np.float32)
+                        norm = np.linalg.norm(vec)
+                        return vec / norm if norm > 0 else vec
+                except Exception as e:
+                    pass
 
         return self._hash_embed(text)
 
     def load_and_index_runbooks(self):
-        """Scans runbooks directory, parses markdown into chunks, and populates FAISS index."""
+        """Scans runbooks directory, parses markdown into chunks, and populates FAISS / vector index."""
         self.chunks = []
         self.runbooks = {}
 
@@ -174,29 +182,50 @@ class LocalVectorStore:
             except Exception as e:
                 print(f"[VectorStore] Error parsing {filepath}: {e}")
 
-        # Build FAISS index
+        # Build index
         if self.chunks:
-            vectors = np.array([self.embed_text(c.content) for c in self.chunks], dtype=np.float32)
-            self.index = faiss.IndexFlatIP(EMBED_DIM)
-            self.index.add(vectors)
-            print(f"[VectorStore] Indexed {len(self.chunks)} chunks into FAISS.")
+            self.vectors = np.array([self.embed_text(c.content) for c in self.chunks], dtype=np.float32)
+            if HAS_FAISS and faiss is not None:
+                try:
+                    self.index = faiss.IndexFlatIP(EMBED_DIM)
+                    self.index.add(self.vectors)
+                    print(f"[VectorStore] Indexed {len(self.chunks)} chunks into FAISS.")
+                except Exception as e:
+                    print(f"[VectorStore] FAISS init error: {e}. Falling back to NumPy index.")
+                    self.index = None
+            else:
+                print(f"[VectorStore] Indexed {len(self.chunks)} chunks using high-performance NumPy Vector Index.")
         else:
             self.index = None
+            self.vectors = None
             print("[VectorStore] No chunks indexed.")
 
     def search(self, query: str, top_k: int = 3) -> List[Tuple[RunbookChunk, float]]:
-        """Search the FAISS index for top matching runbook chunks."""
-        if not self.index or not self.chunks:
+        """Search index for top matching runbook chunks."""
+        if not self.chunks:
             return []
 
-        query_vec = np.array([self.embed_text(query)], dtype=np.float32)
-        scores, indices = self.index.search(query_vec, min(top_k, len(self.chunks)))
+        query_vec = np.array(self.embed_text(query), dtype=np.float32)
+
+        if HAS_FAISS and self.index is not None:
+            q_in = np.array([query_vec], dtype=np.float32)
+            scores_arr, indices_arr = self.index.search(q_in, min(top_k, len(self.chunks)))
+            scores = scores_arr[0]
+            indices = indices_arr[0]
+        elif self.vectors is not None:
+            # NumPy matrix dot product cosine similarity
+            sims = np.dot(self.vectors, query_vec)
+            top_k_indices = np.argsort(sims)[::-1][:min(top_k, len(self.chunks))]
+            scores = sims[top_k_indices]
+            indices = top_k_indices
+        else:
+            return []
 
         query_words = set(re.findall(r"[a-zA-Z0-9_\-\.]+", query.lower()))
 
         results = []
-        for raw_score, idx in zip(scores[0], indices[0]):
-            if idx >= 0 and idx < len(self.chunks):
+        for raw_score, idx in zip(scores, indices):
+            if 0 <= idx < len(self.chunks):
                 chunk = self.chunks[idx]
                 chunk_words = set(re.findall(r"[a-zA-Z0-9_\-\.]+", (chunk.runbook_title + " " + chunk.content).lower()))
                 

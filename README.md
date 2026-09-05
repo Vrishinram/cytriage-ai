@@ -31,8 +31,13 @@ The unified application will immediately start serving at **`http://localhost:80
 
 ## 🎥 Demo Video
 
-- **Walkthrough Video:** [NetTriage AI Demo Video (2-3 Minutes)](https://youtu.be/placeholder-demo-video)
-  *(Showcasing normal triage flow with citation retrieval and difficult cascading multi-tier incident handling)*
+- **Video Walkthrough (2.0 Minutes):** [nettriage_demo_video.mp4](./nettriage_demo_video.mp4)
+- **Direct Video Stream / Download:** [Raw MP4 Video](https://github.com/Vrishinram/nettriage-ai/raw/master/nettriage_demo_video.mp4)
+- **Embedded Visual Demo:**
+
+![NetTriage AI Demo Walkthrough](./nettriage_demo_video.webp)
+
+*(Showcasing normal triage flow with citation retrieval and difficult cascading multi-tier incident handling)*
 
 ---
 

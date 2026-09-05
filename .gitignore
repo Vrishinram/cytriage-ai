@@ -28,4 +28,7 @@ __pycache__/
 .idea/
 .DS_Store
 *.log
+# Playwright & Screenshots
 .playwright-mcp/
+devfolio_*.png
+dashboard_preview.png

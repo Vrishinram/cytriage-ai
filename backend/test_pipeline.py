@@ -9,7 +9,7 @@ from backend.app.services.triage_engine import cluster_and_triage
 from backend.app.api.endpoints import load_demo_alerts
 
 def main():
-    print("=== Testing NetTriage AI Backend Pipeline ===")
+    print("=== Testing CyTriage Network Assistant Backend Pipeline ===")
     
     # 1. Load runbooks and build FAISS index
     vector_store.load_and_index_runbooks()

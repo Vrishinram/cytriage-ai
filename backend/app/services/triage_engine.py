@@ -169,7 +169,7 @@ def _build_post_mortem(inc_id: str, title: str, hypothesis: str, priority: str, 
 - **Incident Reference:** {inc_id.upper()}
 - **Severity Priority:** {priority}
 - **Title:** {title}
-- **Triage Mode:** Autonomous NetTriage AI Correlation
+- **Triage Mode:** Autonomous CyTriage Network Assistant Correlation
 - **Report Timestamp:** {now_str}
 - **Vetted Runbook Applied:** {runbook_id or "Autonomous Escalation"}
 
@@ -201,7 +201,7 @@ def _build_post_mortem(inc_id: str, title: str, hypothesis: str, priority: str, 
 | Clean and scope patch panel fiber termination | DC Facilities | P2 | 48 Hours |
 | Review BGP flap-damping thresholds with upstream AS | IP Peering Architecture | P3 | 7 Days |
 
-*Generated automatically by NetTriage AI Post-Mortem Engine.*
+*Generated automatically by CyTriage Network Assistant Post-Mortem Engine.*
 """
 
 

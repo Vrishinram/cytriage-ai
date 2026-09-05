@@ -1,15 +1,15 @@
 TRACK_ID=PS6
-# NetTriage AI — Telecom Network Incident Triage Assistant
+# CyTriage Network Assistant — Telecom Incident Triage
 
 > **Autonomous alert storm clustering, local FAISS RAG runbook triage, and topological root-cause analysis for NOC/SOC operations.**
 
-NetTriage AI is an enterprise-grade autonomous incident triage engine designed for telecom network operations centers (NOC) and security operation centers (SOC). During critical cascading network failures and alert storms, NetTriage AI suppresses noisy telemetry, groups alerts into root-cause clusters, retrieves authoritative standard operating procedures (SOPs) with exact cited line references, and synthesizes structured escalation tickets and post-mortem incident reports.
+CyTriage Network Assistant is an enterprise-grade autonomous incident triage engine designed for telecom network operations centers (NOC) and security operation centers (SOC). During critical cascading network failures and alert storms, CyTriage Network Assistant suppresses noisy telemetry, groups alerts into root-cause clusters, retrieves authoritative standard operating procedures (SOPs) with exact cited line references, and synthesizes structured escalation tickets and post-mortem incident reports.
 
 ---
 
 ## 🚀 Quick Start (Single Command)
 
-NetTriage AI runs both backend and frontend together from a single Python command:
+CyTriage Network Assistant runs both backend and frontend together from a single Python command:
 
 ```bash
 # 1. Install dependencies
@@ -25,17 +25,17 @@ python app.py
 
 The unified application will immediately start serving at **`http://localhost:8000`**.
 
-> **Note:** If `GEMINI_API_KEY` is not provided or network is offline, NetTriage AI automatically and gracefully falls back to its built-in local vector indexing and deterministic inference pipeline without any crashes.
+> **Note:** If `GEMINI_API_KEY` is not provided or network is offline, CyTriage Network Assistant automatically and gracefully falls back to its built-in local vector indexing and deterministic inference pipeline without any crashes.
 
 ---
 
 ## 🎥 Demo Video
 
-- **Video Walkthrough (2.0 Minutes):** [nettriage_demo_video.mp4](./nettriage_demo_video.mp4)
-- **Direct Video Stream / Download:** [Raw MP4 Video](https://github.com/Vrishinram/nettriage-ai/raw/master/nettriage_demo_video.mp4)
+- **Video Walkthrough (2.0 Minutes):** [cytriage_demo_video.mp4](./cytriage_demo_video.mp4) (also accessible as [nettriage_demo_video.mp4](./nettriage_demo_video.mp4))
+- **Direct Video Stream / Download:** [Raw MP4 Video](https://github.com/Vrishinram/nettriage-ai/raw/master/cytriage_demo_video.mp4)
 - **Embedded Visual Demo:**
 
-![NetTriage AI Demo Walkthrough](./nettriage_demo_video.webp)
+![CyTriage Network Assistant Demo Walkthrough](./cytriage_demo_video.webp)
 
 *(Showcasing normal triage flow with citation retrieval and difficult cascading multi-tier incident handling)*
 
@@ -92,6 +92,6 @@ The unified application will immediately start serving at **`http://localhost:80
 ## 🛠 Sound Engineering & Design Principles
 
 - **Single External Dependency:** Only Google Gemini API (`gemini-embedding-001` & Gemini 2.0 / 1.5) is used for external GenAI. No external vector databases, no 3rd-party SaaS or hidden endpoints.
-- **Strict Evidence Citation:** Every recommendation links directly to an authoritative runbook chunk and line range (e.g. `RB-NET-BGP-001#L14-L35`). NetTriage refuses to hallucinate remediation steps when runbook confidence is insufficient.
+- **Strict Evidence Citation:** Every recommendation links directly to an authoritative runbook chunk and line range (e.g. `RB-NET-BGP-001#L14-L35`). CyTriage refuses to hallucinate remediation steps when runbook confidence is insufficient.
 - **Fail-Safe Fallback:** If the vector similarity score is below the threshold or the model is offline, the system safely triggers an **Automated Tier 3 Escalation Ticket** with timeline events and unverified parameters instead of hallucinating.
 - **Ultra-Fast Startup:** Starts under 5 seconds with all runbooks pre-indexed and ready on port 8000.

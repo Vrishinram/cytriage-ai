@@ -85,7 +85,7 @@ def generate_escalation_ticket(
         suggested_action,
         "",
         "---",
-        "*Report autonomously synthesized by NetTriage AI Escalation Engine.*"
+        "*Report autonomously synthesized by CyTriage Network Assistant Escalation Engine.*"
     ])
 
     raw_markdown = "\n".join(md_lines)

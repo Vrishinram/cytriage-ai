@@ -1,1 +1,1 @@
-"""NetTriage AI backend package."""
+"""CyTriage Network Assistant backend package."""

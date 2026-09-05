@@ -13,18 +13,18 @@ from .services.vector_store import vector_store
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup: load and index Markdown runbooks
-    print("[Lifespan] Booting NetTriage AI Backend Engine...")
+    print("[Lifespan] Booting CyTriage Network Assistant Backend Engine...")
     vector_store.load_and_index_runbooks()
     print("[Lifespan] Knowledge Base & Vector Index ready.")
     from .api.endpoints import trigger_triage_clustering
     await trigger_triage_clustering()
     print("[Lifespan] Initialized demo incident clusters (inc-001, inc-002, inc-003).")
     yield
-    print("[Lifespan] Shutting down NetTriage AI Backend Engine.")
+    print("[Lifespan] Shutting down CyTriage Network Assistant Backend Engine.")
 
 
 app = FastAPI(
-    title="NetTriage AI - Telecom Network Incident Triage Assistant",
+    title="CyTriage Network Assistant - Telecom Incident Triage",
     description="Autonomous alert storm clustering and runbook triage assistant for network and security operations centers.",
     version="1.0.0",
     lifespan=lifespan
@@ -47,7 +47,7 @@ app.include_router(api_router)
 async def health_check():
     return {
         "status": "healthy",
-        "service": "NetTriage AI",
+        "service": "CyTriage Network Assistant",
         "indexed_runbooks": len(vector_store.runbooks),
         "indexed_chunks": len(vector_store.chunks),
     }

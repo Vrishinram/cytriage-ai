@@ -16,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NetTriage AI - Telecom Incident Triage Assistant",
+  title: "CyTriage Network Assistant - Telecom Incident Triage",
   description: "Autonomous alert storm clustering and runbook triage assistant for network and security operations centers.",
 };
 

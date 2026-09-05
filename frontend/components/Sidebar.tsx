@@ -78,14 +78,14 @@ export default function Sidebar() {
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-semibold tracking-tight text-white text-base">
-                  NetTriage
+                  CyTriage
                 </span>
                 <span className="text-[10px] font-semibold tracking-wider px-1.5 py-0.5 rounded-full bg-white/10 text-sky-300 border border-white/10">
-                  AI
+                  Assistant
                 </span>
               </div>
               <p className="text-xs text-slate-400 font-medium tracking-tight">
-                Telecom SOC Assistant
+                Network Incident Assistant
               </p>
             </div>
           </div>

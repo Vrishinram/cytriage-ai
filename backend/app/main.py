@@ -16,6 +16,9 @@ async def lifespan(app: FastAPI):
     print("[Lifespan] Booting NetTriage AI Backend Engine...")
     vector_store.load_and_index_runbooks()
     print("[Lifespan] Knowledge Base & Vector Index ready.")
+    from .api.endpoints import trigger_triage_clustering
+    await trigger_triage_clustering()
+    print("[Lifespan] Initialized demo incident clusters (inc-001, inc-002, inc-003).")
     yield
     print("[Lifespan] Shutting down NetTriage AI Backend Engine.")
 
@@ -67,7 +70,8 @@ async def static_html_rewrite_middleware(request: Request, call_next):
 
 
 # Mount built frontend for single-command judge execution
-frontend_dist = BASE_DIR / "frontend" / "dist"
+frontend_out = BASE_DIR / "frontend" / "out"
+frontend_dist = frontend_out if frontend_out.exists() else (BASE_DIR / "frontend" / "dist")
 if frontend_dist.exists() and (frontend_dist / "index.html").exists():
     print(f"[StaticFiles] Mounting production frontend from: {frontend_dist}")
     app.mount("/", StaticFiles(directory=str(frontend_dist), html=True), name="static_frontend")

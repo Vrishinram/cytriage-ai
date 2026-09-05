@@ -104,9 +104,7 @@ export interface TriageClusterResponse {
 }
 
 const API_BASE_URL =
-  typeof window !== "undefined"
-    ? `${window.location.origin}/api/v1`
-    : process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api/v1";
+  process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api/v1";
 
 export async function fetchIncidents(): Promise<Incident[]> {
   const res = await fetch(`${API_BASE_URL}/incidents`, { cache: "no-store" });

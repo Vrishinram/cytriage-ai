@@ -1,6 +1,8 @@
 TRACK_ID=PS6
 # NetTriage AI — Telecom Network Incident Triage Assistant
 
+> **Autonomous alert storm clustering, local FAISS RAG runbook triage, and topological root-cause analysis for NOC/SOC operations.**
+
 NetTriage AI is an enterprise-grade autonomous incident triage engine designed for telecom network operations centers (NOC) and security operation centers (SOC). During critical cascading network failures and alert storms, NetTriage AI suppresses noisy telemetry, groups alerts into root-cause clusters, retrieves authoritative standard operating procedures (SOPs) with exact cited line references, and synthesizes structured escalation tickets and post-mortem incident reports.
 
 ---
